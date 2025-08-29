@@ -1,0 +1,66 @@
+/* Global brand styles to complement Bootstrap */
+:root {
+  --brand-primary: #0d6efd;
+  --brand-dark: #1f2937;
+  --brand-muted: #6b7280;
+  --card-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+html, body { height: 100%; }
+body {
+  background: #f7f8fa;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App background image wrapper */
+.app-bg {
+  /* background-image: url('/assets/bg.jpg'); */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.navbar {
+  box-shadow: var(--card-shadow);
+}
+
+.card { box-shadow: var(--card-shadow); border: 0; }
+.card-title { font-weight: 600; }
+
+.form-control, .form-select { border-radius: 0.5rem; }
+.btn { border-radius: 0.5rem; }
+
+/* Utility spacing tweaks */
+.vstack.gap-3 > * + * { margin-top: 1rem; }
+.vstack.gap-2 > * + * { margin-top: 0.5rem; }
+
+/* Hall cards grid spacing on small screens */
+@media (max-width: 576px) {
+  .card .d-flex.gap-2 { flex-direction: column; }
+}
+
+/* Table polish */
+.table { background: #fff; }
+.table thead th { font-weight: 600; color: #374151; }
+
+/* Home hero */
+.home-hero {
+  min-height: calc(100vh - 56px - 56px);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.home-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
+}
+.home-hero > .hero-content {
+  position: relative;
+  z-index: 1;
+}

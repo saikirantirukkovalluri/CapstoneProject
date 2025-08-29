@@ -1,0 +1,30 @@
+<div class="container py-3">
+  <h2 class="mb-3">Available Halls</h2>
+  <div *ngIf="halls.length === 0" class="alert alert-info">No halls available. Please add halls in the backend and refresh.</div>
+  <div class="row g-3">
+    <div class="col-md-6 col-lg-4" *ngFor="let hall of halls">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ hall.name }}</h5>
+          <p class="card-text mb-1">{{ hall.address }}</p>
+          <div class="small text-muted mb-2">Capacity: {{ hall.capacity }}</div>
+          <div class="small text-muted mb-3">Price: {{ hall.pricePerDay }}</div>
+          <div class="vstack gap-2">
+            <input class="form-control" type="text" placeholder="Customer Name" [(ngModel)]="bookingForms[hall.id].customerName" name="customerName{{hall.id}}">
+            <div class="d-flex gap-2">
+              <input class="form-control" type="date" [(ngModel)]="bookingForms[hall.id].startDate" name="startDate{{hall.id}}">
+              <input class="form-control" type="date" [(ngModel)]="bookingForms[hall.id].endDate" name="endDate{{hall.id}}">
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-success flex-fill" (click)="book(hall.id)" [disabled]="loadingBookings[hall.id]">
+                <span *ngIf="loadingBookings[hall.id]" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                {{ loadingBookings[hall.id] ? 'Booking...' : 'Book' }}
+              </button>
+              <a class="btn btn-outline-primary" [routerLink]="['/book', hall.id]">Open Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

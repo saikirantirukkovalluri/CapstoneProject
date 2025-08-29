@@ -1,0 +1,33 @@
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-3">Book Hall</h4>
+          <form (ngSubmit)="bookHall()" class="vstack gap-3">
+            <div>
+              <label class="form-label">Customer Name</label>
+              <input class="form-control" type="text" placeholder="Customer Name" [(ngModel)]="customerName" name="customerName">
+            </div>
+            <div class="d-flex gap-2">
+              <div class="flex-fill">
+                <label class="form-label">Start Date</label>
+                <input class="form-control" type="date" [(ngModel)]="startDate" name="startDate">
+              </div>
+              <div class="flex-fill">
+                <label class="form-label">End Date</label>
+                <input class="form-control" type="date" [(ngModel)]="endDate" name="endDate">
+              </div>
+            </div>
+            <div class="d-grid">
+              <button class="btn btn-success" type="submit" [disabled]="isLoading">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                {{ isLoading ? 'Booking...' : 'Book' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
